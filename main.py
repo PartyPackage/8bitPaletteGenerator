@@ -12,11 +12,11 @@ def generate_palette_hsv():
     pixels = []
     for x in range(256):
         h = ((x % 16) / 16) * 360
-        s = (math.floor((x / 16) + 2) / 15) * 102
-        v = abs((math.floor(x / 16) - 16) / 16) * 99
+        s = clip((math.floor((x / 16) + 2) / 9) * 99, 0, 100)
+        v = clip(abs((math.floor(x / 16) - 16) / 9) * 99, 0, 100)
         rgb = tuple(round(i * 255) for i in colorsys.hsv_to_rgb(h / 360, s / 100, v / 100))
         pixels.append(rgb)
-        # print(f"x: {x}, row: {math.floor(x / 16)}, hsv: {h},{s},{v}, rgb: {rgb}")
+        print(f"x: {x}, row: {math.floor(x / 16)}, hsv: {h},{s},{v}, rgb: {rgb}")
 
     return pixels
 
