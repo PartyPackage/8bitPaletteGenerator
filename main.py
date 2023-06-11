@@ -42,7 +42,9 @@ if __name__ == '__main__':
             x = (p % d)
             y = int((math.floor(p / d) / (d - 1)) * (d - 1))
             im.putpixel((x, y), pixels[p])
-            # print(f"{x},{y}: {p}")
+            # print(f"{x},{y}: {pixels[p]}")
 
         print(len(set(im.getdata())))
         im.show()
+        bits = math.exp(math.log(d*d)/10)
+        im.save(f"output.png")
